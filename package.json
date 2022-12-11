@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "node index.js",
+    "start": "npm run build-client && node index.js",
     "dev": "nodemon index.js",
-    "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js"
+    "dev-peer": "cross-env GENERATE_PEER_PORT='true' nodemon index.js",
+    "build-client": "npm run clean && parcel build client/src/index.html --out-dir client/dist",
+    "dev-client": "npm run clean && parcel client/src/index.html --out-dir client/dist",
+    "clean": "rm -rf .cache client/dist"
   },
   "author": "",
   "license": "ISC",
@@ -17,10 +20,19 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "@babel/runtime": "^7.20.6",
+    "@popperjs/core": "^2.11.6",
     "body-parser": "^1.20.1",
+    "bootstrap": "^5.2.3",
     "elliptic": "^6.5.4",
     "express": "^4.18.2",
     "hex-to-binary": "^1.0.1",
+    "history": "^5.3.0",
+    "parcel-bundler": "^1.12.5",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^4.3.1",
     "redis": "^2.8.0",
     "request": "^2.88.2",
     "uuid": "^9.0.0"
